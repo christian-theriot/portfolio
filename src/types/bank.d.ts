@@ -1,17 +1,20 @@
-declare enum BankType {
-  CHECKING = 'Checking',
-  SAVINGS = 'Savings',
-  CREDIT = 'Credit',
-  BROKERAGE = 'Brokerage',
-  RETIREMENT_401k = '401k',
-  RETIREMENT_ROTH_401k = 'ROTH 401k',
-  RETIREMENT_IRA = 'IRA',
-  RETIREMENT_ROTH_IR = 'ROTH IRA',
-}
+declare type BankTypes =
+  | 'Checking'
+  | 'Savings'
+  | 'Credit'
+  | 'Brokerage'
+  | '401k'
+  | 'Roth 401k'
+  | 'IRA'
+  | 'Roth IRA';
 
 declare type Bank = {
   name: string;
-  type: BankType;
+  type: BankTypes;
   total: number;
   lastMonthTotal: number;
 };
+
+declare interface BankModel extends Bank {
+  id: number;
+}
