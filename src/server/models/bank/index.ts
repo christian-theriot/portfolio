@@ -69,7 +69,7 @@ export class Bank {
    * @return BankModel
    */
   static async load(id: number): Promise<BankModel | undefined> {
-    const model = await sql.begin(async (sql) => {
+    return await sql.begin(async (sql) => {
       const exists = await this.exists(sql);
 
       if (exists) {
@@ -88,8 +88,6 @@ export class Bank {
 
       return undefined;
     });
-
-    return model;
   }
 
   /**

@@ -10,3 +10,7 @@ declare type Stock = {
   current_price: number;
   mark_to_market: number;
 };
+
+declare interface StockModel extends Stock {
+  id: number;
+}
