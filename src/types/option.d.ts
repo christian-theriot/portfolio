@@ -1,19 +1,14 @@
-declare enum OptionContractType {
-  PUT = 'PUT',
-  CALL = 'CALL',
-}
-
-declare enum OptionContractStatus {
-  OPEN = 'OPEN',
-  CLOSED = 'CLOSED',
-  PENDING = 'PENDING',
-  EXPIRED = 'EXPIRED',
-  ASSIGNED = 'ASSIGNED',
-}
+declare type OptionContractTypes = 'Put' | 'Call';
+declare type OptionContractStatuses =
+  | 'Open'
+  | 'Closed'
+  | 'Pending'
+  | 'Expired'
+  | 'Assigned';
 
 declare type Option = {
   ticker: string;
-  type: OptionContractType;
+  type: OptionContractTypes;
   quantity: number;
   strike: number;
   expiry: Date;
@@ -26,8 +21,12 @@ declare type Option = {
   theta: number;
   rho: number;
   iv: number;
-  status: OptionContractStatus;
+  status: OptionContractStatuses;
   close_premium?: number;
   close_date?: Date;
   profit: number;
 };
+
+declare interface OptionModel extends Option {
+  id: number;
+}

@@ -7,5 +7,6 @@ beforeAll(async () => {
 afterAll(async () => {
   await sql`drop table if exists bank cascade;`;
   await sql`drop table if exists stock cascade;`;
-  await sql.end({ timeout: 1 });
+  await sql`drop table if exists option cascade;`;
+  await sql.end();
 });

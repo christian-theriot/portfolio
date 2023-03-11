@@ -36,7 +36,7 @@ export class Stock {
     const id = await sql.begin(async (sql) => {
       await sql`create table if not exists stock(id bigserial primary key,ticker text not null,shares int not null,open_date date not null,open_price real not null,dividend real not null,cost_basis real not null,close_date date,close_price real,current_price real not null,mark_to_market real not null);`;
 
-      const [{ id }] = await sql`insert into stock${sql(
+      const [{ id }] = await sql`insert into stock ${sql(
         {
           ticker,
           shares,
