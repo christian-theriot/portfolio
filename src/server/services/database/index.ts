@@ -1,4 +1,4 @@
-import * as postgres from 'postgres';
+import postgres from 'postgres';
 import { config } from 'dotenv';
 
 config();
@@ -10,3 +10,5 @@ export const sql = postgres({
   pass: process.env['POSTGRES_PASS'],
   db: process.env['POSTGRES_DB'],
 });
+
+export default { sql };
