@@ -1,0 +1,35 @@
+<nav>
+  <span>
+    <a routerLink="/">Portfolio</a>
+  </span>
+  <ul>
+    <li>
+      <span>Portfolio</span>
+      <ul>
+        <li>
+          <a routerLink="/dashboard">Overview</a>
+        </li>
+        <li>
+          <a routerLink="/accounts">Accounts</a>
+        </li>
+        <li>
+          <a routerLink="/expenses">Expenses</a>
+        </li>
+        <li>
+          <a routerLink="/dashboard" [queryParams]="{ v: 'net worth' }"
+            >Net Worth</a
+          >
+        </li>
+        <li>
+          <a routerLink="/stocks">Stocks</a>
+        </li>
+        <li>
+          <a routerLink="/options">Options</a>
+        </li>
+        <li>
+          <a routerLink="/dividends">Dividends</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

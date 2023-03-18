@@ -1,11 +1,12 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@server/*": ["./src/server/*"]
+      "@server/*": [
+        "./src/server/*"
+      ]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -24,7 +25,11 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"]
+    "lib": [
+      "ES2022",
+      "dom",
+      "esnext.asynciterable"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
