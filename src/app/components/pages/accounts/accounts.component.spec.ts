@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MockComponent } from 'src/app/utils/mock';
 
 import { AccountsComponent } from './accounts.component';
 
@@ -8,9 +10,12 @@ describe('AccountsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountsComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        AccountsComponent,
+        MockComponent({ selector: 'app-page' }),
+      ],
+      imports: [FormsModule, ReactiveFormsModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AccountsComponent);
     component = fixture.componentInstance;

@@ -1,12 +1,14 @@
+import { API } from './api';
 import { sql } from './services';
+
+const api = new API();
 
 beforeAll(async () => {
   await sql`set client_min_messages = 'ERROR';`;
+  await api.setup();
 });
 
 afterAll(async () => {
-  await sql`drop table if exists bank cascade;`;
-  await sql`drop table if exists stock cascade;`;
-  await sql`drop table if exists option cascade;`;
+  await api.teardown();
   await sql.end();
 });
