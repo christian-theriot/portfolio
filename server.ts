@@ -7,6 +7,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 
 import { AppServerModule } from './src/main.server';
+import { API } from '@server/api';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -30,7 +31,20 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
+  const api = new API();
+
   // Example Express Rest API endpoints
+  server.use('/api/graphql', async (req, res) => {
+    res.status(200).send({
+      data: await api.run(
+        req.query['query'] ??
+          req.query['mutation'] ??
+          req.body.query ??
+          req.body.mutation,
+        req.query['variables'] ?? req.body.variables
+      ),
+    });
+  });
 
   // Serve static files from /browser
   server.get(

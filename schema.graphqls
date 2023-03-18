@@ -1,0 +1,21 @@
+type Query {
+  healthcheck: Boolean
+  get_accounts(ids: [Int!], offset: Int, limit: Int): AccountResponse
+}
+
+type Mutation {
+  create_account(name: String!, type: String!, total: Float!): Account
+  delete_account(id: Int!): Int
+}
+
+type Account {
+  id: Int!
+  name: String!
+  type: String!
+  total: Float!
+}
+
+type AccountResponse {
+  total: Int!
+  items: [Account!]!
+}
