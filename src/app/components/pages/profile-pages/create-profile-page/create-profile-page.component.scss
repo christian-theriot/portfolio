@@ -1,0 +1,32 @@
+.form-floating {
+  position: relative;
+
+  .form-control {
+    padding: 1rem 0.75rem;
+    transition: all 0.15s ease-in-out;
+
+    & ~ label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      transition: all 0.15s ease-in-out;
+    }
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    &:focus ~ label,
+    &:not(:placeholder-shown) ~ label {
+      opacity: 0.8;
+      color: dimgray;
+      transform: scale(0.85) translateY(-1rem) translateX(-0.5rem);
+    }
+  }
+}
