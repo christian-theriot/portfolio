@@ -5,7 +5,7 @@ import { HealthCheckEndpoint } from './healthcheck';
 
 export class API {
   constructor(app: Express, afterInit?: () => void) {
-    this.setup().then(() => {
+    API.setup().then(() => {
       console.log('Initialized Database');
 
       new GraphQLEndpoint(app);
@@ -15,9 +15,9 @@ export class API {
     });
   }
 
-  async setup() {
+  static async setup() {
     await sql`set client_min_messages = 'ERROR';`;
   }
 
-  async teardown() {}
+  static async teardown() {}
 }

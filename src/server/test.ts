@@ -1,13 +1,11 @@
 import { API } from './api';
 import { sql } from './services';
 
-const api = new API();
-
 beforeAll(async () => {
-  await api.setup();
+  await API.setup();
 });
 
 afterAll(async () => {
-  await api.teardown();
+  await API.teardown();
   await sql.end();
 });
