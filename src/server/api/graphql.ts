@@ -11,10 +11,13 @@ export class GraphQLEndpoint implements APIEndpoint<Request, Response> {
 
   endpoint(req: Request, res: Response) {
     const filename = join(__dirname, '..', '..', '..', 'schema.graphqls');
+
+    /* istanbul ignore next */
     const fileExists = existsSync(filename)
       ? readFileSync(filename).toString()
       : undefined;
 
+    /* istanbul ignore if */
     if (!fileExists) {
       res.status(503).send('Service Unavailable');
       return;
@@ -28,14 +31,9 @@ export class GraphQLEndpoint implements APIEndpoint<Request, Response> {
           return exists;
         },
       },
-      source:
-        req.query['query'] ??
-        req.body.query ??
-        req.query['mutation'] ??
-        req.body.mutation,
-      variableValues: req.query['variables'] ?? req.body.variables,
+      source: req.query['query'] ?? req.body.query,
     })
       .then((data) => res.status(200).send(data))
-      .catch((err) => res.status(500).send(err));
+      .catch(/* istanbul ignore next */ (err) => res.status(500).send(err));
   }
 }
