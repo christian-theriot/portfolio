@@ -1,3 +1,15 @@
 type Query {
   healthcheck: Boolean
+  login(email: String!, password: String!): Profile
+}
+
+type Mutation {
+  signUp(email: String!, password: String!): Profile
+  delete(id: Int!): Int
+}
+
+type Profile {
+  id: Int!
+  email: String!
+  password: String!
 }
