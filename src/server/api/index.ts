@@ -1,32 +1,23 @@
-import { buildSchema, graphql } from 'graphql';
 import { sql } from '../services';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { Express } from 'express';
+import { GraphQLEndpoint } from './graphql';
+import { HealthCheckEndpoint } from './healthcheck';
 
 export class API {
-  constructor() {}
+  constructor(app: Express, afterInit?: () => void) {
+    this.setup().then(() => {
+      console.log('Initialized Database');
+
+      new GraphQLEndpoint(app);
+      new HealthCheckEndpoint(app);
+
+      afterInit?.();
+    });
+  }
 
   async setup() {
     await sql`set client_min_messages = 'ERROR';`;
   }
 
   async teardown() {}
-
-  async run(query: string, variables?: any) {
-    return await graphql({
-      schema: buildSchema(
-        readFileSync(
-          join(__dirname, '..', '..', '..', 'schema.graphqls')
-        ).toString()
-      ),
-      rootValue: {
-        healthcheck: async () => {
-          const [{ exists }] = await sql`select exists(select from pg_tables);`;
-          return exists;
-        },
-      },
-      source: query,
-      variableValues: variables,
-    });
-  }
 }

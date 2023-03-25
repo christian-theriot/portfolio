@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -8,11 +6,5 @@ import { map, Observable } from 'rxjs';
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent {
-  isWildcardPage$: Observable<boolean>;
-
-  constructor(private route: ActivatedRoute) {
-    this.isWildcardPage$ = this.route.data.pipe(
-      map((data) => data['wildcard'])
-    );
-  }
+  constructor() {}
 }
