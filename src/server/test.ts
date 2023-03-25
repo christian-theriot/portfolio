@@ -4,7 +4,6 @@ import { sql } from './services';
 const api = new API();
 
 beforeAll(async () => {
-  await sql`set client_min_messages = 'ERROR';`;
   await api.setup();
 });
 

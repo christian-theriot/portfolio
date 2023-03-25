@@ -33,6 +33,11 @@ export function app(): express.Express {
 
   const api = new API();
 
+  api
+    .setup()
+    .then(() => console.log('Initialized database'))
+    .catch((err) => console.error(err));
+
   // Example Express Rest API endpoints
   server.use('/api/graphql', async (req, res) => {
     res.status(200).send({

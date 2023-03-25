@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d portfolio'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    env_file: .env
+    networks:
+      - public
+
+  app:
+    container_name: portfolio
+    build:
+      context: .
+    restart: always
+    env_file: .env
+    ports:
+      - 4000:4000
+    networks:
+      - public
+
+networks:
+  public:
+    driver: bridge
