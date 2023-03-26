@@ -24,11 +24,6 @@ export class GraphQLEndpoint implements APIEndpoint<Request, Response> {
       return;
     }
 
-    console.log({
-      query: req.query,
-      body: req.body,
-    });
-
     graphql({
       schema: buildSchema(fileExists),
       rootValue: {
