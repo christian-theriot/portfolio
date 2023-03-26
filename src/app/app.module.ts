@@ -8,30 +8,12 @@ import { PageComponent } from './components/pages/page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
-import { CreateAccountPageComponent } from './components/pages/account-pages/create-account-page/create-account-page.component';
-import { EditAccountPageComponent } from './components/pages/account-pages/edit-account-page/edit-account-page.component';
-import { RemoveAccountPageComponent } from './components/pages/account-pages/remove-account-page/remove-account-page.component';
-import { CreateProfilePageComponent } from './components/pages/profile-pages/create-profile-page/create-profile-page.component';
-import { EditProfilePageComponent } from './components/pages/profile-pages/edit-profile-page/edit-profile-page.component';
-import { RemoveProfilePageComponent } from './components/pages/profile-pages/remove-profile-page/remove-profile-page.component';
-import { ViewAccountsPageComponent } from './components/pages/account-pages/view-accounts-page/view-accounts-page.component';
-import { ViewProfilePageComponent } from './components/pages/profile-pages/view-profile-page/view-profile-page.component';
+import { ProfileService } from './shared/services/profile-service.service';
+import { SignUpPageComponent } from './components/pages/profile/sign-up-page/sign-up-page.component';
+import { SignInPageComponent } from './components/pages/profile/sign-in-page/sign-in-page.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageComponent,
-    MenuComponent,
-    HomePageComponent,
-    CreateAccountPageComponent,
-    EditAccountPageComponent,
-    RemoveAccountPageComponent,
-    CreateProfilePageComponent,
-    EditProfilePageComponent,
-    RemoveProfilePageComponent,
-    ViewAccountsPageComponent,
-    ViewProfilePageComponent,
-  ],
+  declarations: [AppComponent, PageComponent, MenuComponent, HomePageComponent, SignUpPageComponent, SignInPageComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RoutingModule,
@@ -39,7 +21,7 @@ import { ViewProfilePageComponent } from './components/pages/profile-pages/view-
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockComponent } from 'src/app/utils/mock';
 
-import { RemoveProfilePageComponent } from './remove-profile-page.component';
+import { SignUpPageComponent } from './sign-up-page.component';
 
-describe('RemoveProfilePageComponent', () => {
-  let component: RemoveProfilePageComponent;
-  let fixture: ComponentFixture<RemoveProfilePageComponent>;
+describe('SignUpPageComponent', () => {
+  let component: SignUpPageComponent;
+  let fixture: ComponentFixture<SignUpPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        RemoveProfilePageComponent,
+        SignUpPageComponent,
         MockComponent({ selector: 'app-page' }),
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RemoveProfilePageComponent);
+    fixture = TestBed.createComponent(SignUpPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

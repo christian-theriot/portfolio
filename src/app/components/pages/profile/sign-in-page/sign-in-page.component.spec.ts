@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockComponent } from 'src/app/utils/mock';
 
-import { CreateAccountPageComponent } from './create-account-page.component';
+import { SignInPageComponent } from './sign-in-page.component';
 
-describe('CreateAccountPageComponent', () => {
-  let component: CreateAccountPageComponent;
-  let fixture: ComponentFixture<CreateAccountPageComponent>;
+describe('SignInPageComponent', () => {
+  let component: SignInPageComponent;
+  let fixture: ComponentFixture<SignInPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        CreateAccountPageComponent,
+        SignInPageComponent,
         MockComponent({ selector: 'app-page' }),
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CreateAccountPageComponent);
+    fixture = TestBed.createComponent(SignInPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
